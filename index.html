@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cisco ISE Mastery Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --cisco-blue: #0072B8;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #0072B8 0%, #003087 100%);
+        }
+        
+        .nav-link:hover {
+            color: #0072B8;
+            transform: translateY(-2px);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(0 114 184 / 0.25);
+        }
+        
+        .quiz-option {
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            background-color: #f0f9ff;
+            border-color: #0072B8;
+        }
+        .selected-option {
+            background-color: #e0f2fe !important;
+            border-color: #0072B8 !important;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-[#0072B8] rounded-xl flex items-center justify-center text-white font-bold text-2xl">I</div>
+                <div>
+                    <span class="font-bold text-2xl tracking-tight">Cisco ISE</span>
+                    <span class="text-xs text-gray-500 block -mt-1">Mastery Hub</span>
+                </div>
+            </div>
+            
+            <div class="hidden xl:flex items-center gap-6 text-sm font-medium">
+                <a href="#about" class="nav-link text-gray-600 transition-all">About Platform</a>
+                <a href="#beginner-foundations" class="nav-link text-gray-600 transition-all">Beginner Basics</a>
+                <a href="#features" class="nav-link text-gray-600 transition-all">Key Features</a>
+                <a href="#deployment" class="nav-link text-[#0072B8] font-bold transition-all">Deployment of ISE</a>
+                <a href="#lab-topology" class="nav-link text-gray-600 transition-all">Lab & Configs</a>
+                <a href="#management" class="nav-link text-gray-600 transition-all">Operations</a>
+                <a href="#quizzes" class="nav-link text-gray-600 transition-all">Exam Quiz</a>
+                <a href="#resources" class="nav-link text-gray-600 transition-all">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-bg text-white py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="bg-blue-500/30 text-blue-200 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 inline-block">Absolute Beginner to Engineering Guide</span>
+                    <h1 class="text-5xl md:text-6xl font-bold leading-none tracking-tighter mb-6">
+                        Cisco Identity<br>Services Engine<br>Mastery Guide
+                    </h1>
+                    <p class="text-xl text-blue-100 mb-10 max-w-lg">
+                        Learn how to architect, bootstrap, configure, and troubleshoot Cisco ISE from the ground up using real network engineering paradigms.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#beginner-foundations" class="bg-white text-[#0072B8] font-semibold px-6 py-3.5 rounded-xl shadow-md hover:bg-gray-100 transition-colors">Start Beginner Track</a>
+                        <a href="#deployment" class="bg-blue-600 text-white font-semibold px-6 py-3.5 rounded-xl shadow-md hover:bg-blue-700 transition-colors border border-blue-400/20">View Full Deployment Guide</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="max-w-7xl mx-auto px-6 py-20 scroll-mt-20">
+        <div class="grid md:grid-cols-12 gap-16 mb-20">
+            <div class="md:col-span-6">
+                <span class="px-4 py-2 bg-blue-100 text-blue-700 text-xs font-semibold rounded-3xl">Platform Overview</span>
+                <h2 class="text-5xl font-bold leading-tight mt-6 text-gray-900">The Foundation of Zero Trust Security</h2>
+                <p class="mt-6 text-lg text-gray-600 leading-relaxed">
+                    Cisco Identity Services Engine (ISE) is an enterprise-class **Network Access Control (NAC)** and identity management platform. Think of it as a highly intelligent digital security guard for corporate network infrastructure.
+                </p>
+                <p class="mt-4 text-lg text-gray-600 leading-relaxed">
+                    In a modern Zero Trust architecture, you cannot assume a device or user is safe just because they are plugged into a physical switch port or connected to office Wi-Fi. Cisco ISE acts as the centralized gatekeeper, validating **who** is connecting, **what** device they are using, and **where** they are trying to go before allowing entry.
+                </p>
+            </div>
+            <div class="md:col-span-6 flex flex-col justify-center">
+                <div class="bg-gradient-to-br from-gray-900 to-slate-800 text-white rounded-3xl p-8 shadow-xl border border-gray-800">
+                    <div class="text-xs uppercase tracking-widest text-blue-400 font-semibold mb-2">Architectural Focus</div>
+                    <h3 class="text-2xl font-bold mb-4">Five Pillars of Capability</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                        ISE consolidates complex standalone network security visibility into a single policy dashboard engine, performing network traffic posture validation natively across local switches, edge access hubs, and cloud infrastructure.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 text-xs font-medium text-gray-300">
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-key text-blue-400"></i> Identity Verification</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-fingerprint text-blue-400"></i> Intelligent Profiling</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-heart-pulse text-blue-400"></i> Health Posturing</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-nodes text-blue-400"></i> TrustSec Segmentation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="beginner-foundations" class="bg-white border-y border-gray-200 py-20 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-4 py-1.5 bg-blue-100 text-[#0072B8] text-xs font-bold rounded-full uppercase tracking-wider">Absolute Beginner Core</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-4">Essential Concepts You Must Know First</h2>
+                <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Before navigating the Cisco ISE GUI dashboard, you must master the fundamental network behaviors that govern network access control.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 bg-gray-50 rounded-2xl border">
+                    <div class="w-12 h-12 bg-blue-100 text-[#0072B8] rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-network-wired"></i></div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">What is a NAD?</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        A <strong>Network Access Device (NAD)</strong> is any hardware switch, wireless LAN controller (WLC), or VPN gateway that sits between the endpoint client device and the internal corporate network. 
+                    </p>
+                    <p class="text-sm text-gray-600 leading-relaxed mt-2 font-medium text-blue-700">
+                        *Key Note: ISE does not connect physically to users. Users connect to a NAD, and the NAD asks ISE what to do with them.
+                    </p>
+                </div>
+
+                <div class="p-6 bg-gray-50 rounded-2xl border">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-server"></i></div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">RADIUS vs. TACACS+</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        ISE uses two distinct UDP/TCP protocol channels to listen to network traffic requests:
+                    </p>
+                    <ul class="text-xs text-gray-600 space-y-1.5 mt-2 bg-white p-3 rounded-xl border">
+                        <li><strong>RADIUS (UDP 1812/1813):</strong> Used for <em>Network Access</em>. Validates regular users and devices connecting via ports/Wi-Fi.</li>
+                        <li><strong>TACACS+ (TCP 49):</strong> Used for <em>Device Administration</em>. Secures logins for network administrators commands on switches and routers.</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 bg-gray-50 rounded-2xl border">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-passport"></i></div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">802.1X vs. MAB Access</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        When an endpoint attaches to a switch port monitored by ISE, access is processed using one of two methods:
+                    </p>
+                    <ul class="text-xs text-gray-600 space-y-1.5 mt-2 bg-white p-3 rounded-xl border">
+                        <li><strong>802.1X:</strong> The golden standard. The device actively runs a software supplicant that securely transmits a username/password or a hardware digital certificate.</li>
+                        <li><strong>MAB (MAC Authentication Bypass):</strong> Used for simple, legacy devices (like printers). The NAD captures the device's MAC address and passes it to ISE to verify against a whitelist.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="deployment" class="bg-gray-50 border-y border-gray-200 py-24 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-5 py-2 bg-[#0072B8] text-white rounded-3xl text-sm font-semibold uppercase tracking-wider">Comprehensive Architecture</span>
+                <h2 class="text-5xl font-bold text-gray-900 mt-6">Deployment of ISE</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                    When new CISCO ISE box arrives, what is first step that we perform <span class="text-xs text-blue-500 font-mono">[cite: 1]</span>. From unboxing the appliance to deep troubleshooting with TCP Dumps, follow this precise sequence.
+                </p>
+            </div>
+
+            <div class="bg-white border rounded-3xl p-10 shadow-sm mb-16">
+                <h4 class="font-bold mb-6 text-2xl text-center md:text-left text-gray-900">ISE Personas Deep Dive</h4>
+                <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="p-6 border rounded-2xl bg-gray-50 hover:bg-blue-50 transition-colors">
+                        <strong class="text-[#0072B8] text-xl">PAN</strong><br><span class="font-medium text-gray-800">Policy Administration Node</span><br><span class="text-sm text-gray-600 block mt-2">Single source of truth for all policies and configurations.</span>
+                    </div>
+                    <div class="p-6 border rounded-2xl bg-gray-50 hover:bg-purple-50 transition-colors">
+                        <strong class="text-purple-600 text-xl">PSN</strong><br><span class="font-medium text-gray-800">Policy Service Node</span><br><span class="text-sm text-gray-600 block mt-2">Handles all active AAA requests (RADIUS/TACACS+ processing).</span>
+                    </div>
+                    <div class="p-6 border rounded-2xl bg-gray-50 hover:bg-emerald-50 transition-colors">
+                        <strong class="text-emerald-600 text-xl">MnT</strong><br><span class="font-medium text-gray-800">Monitoring & Troubleshooting</span><br><span class="text-sm text-gray-600 block mt-2">Centralized framework for logging, session analytics, reporting, and alerts.</span>
+                    </div>
+                    <div class="p-6 border rounded-2xl bg-gray-50 hover:bg-indigo-50 transition-colors">
+                        <strong class="text-indigo-600 text-xl">pxGrid</strong><br><span class="font-medium text-gray-800">Context Sharing Node</span><br><span class="text-sm text-gray-600 block mt-2">Integrates seamlessly with Cisco DNA Center, Firepower, and ecosystem partners.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-16">
+                
+                <div class="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-md">
+                    <div class="bg-slate-900 p-8 text-white">
+                        <h3 class="text-3xl font-bold flex items-center gap-4"><i class="fa-solid fa-power-off text-rose-500"></i> Phase 1: Initial Out-of-the-Box Setup</h3>
+                        <p class="mt-2 text-slate-300">When a brand-new Cisco Identity Services Engine (ISE) physical appliance (like an SNS box) or virtual machine lands on your desk, the very first sequence of steps is always focused on bringing the box to life at the command line and ensuring its foundations are solid. <span class="text-xs text-blue-300 font-mono">[cite: 2]</span> Before you even touch the Graphical User Interface (GUI) or create a single network policy, you have to run through the initial bootstrap setup and verify that the core application services are actually running. <span class="text-xs text-blue-300 font-mono">[cite: 3]</span> Here is the exact step-by-step process you perform right out of the box: <span class="text-xs text-blue-300 font-mono">[cite: 4]</span></p>
+                    </div>
+                    <div class="p-8 md:p-10">
+                        <h4 class="text-xl font-bold text-gray-900 mb-4">1. Initial Console Setup <span class="text-xs text-blue-500 font-mono">[cite: 5]</span></h4>
+                        <p class="text-gray-700 mb-4">When you power on the ISE appliance for the first time (either via a physical serial console or the Cisco Integrated Management Controller (CIMC) KVM console), you will be greeted by a prompt asking you to initialize the operating system. <span class="text-xs text-blue-500 font-mono">[cite: 6]</span></p>
+                        
+                        <div class="bg-slate-950 text-emerald-400 p-6 rounded-2xl font-mono text-sm mb-6 overflow-x-auto shadow-inner">
+                            <span class="text-slate-500">Plaintext <span class="text-xs text-slate-600 font-mono">[cite: 7]</span></span><br>
+                            ********************************************** <span class="text-xs text-slate-600 font-mono">[cite: 8]</span><br>
+                            Please type 'setup' to configure the appliance <span class="text-xs text-slate-600 font-mono">[cite: 9]</span><br>
+                            ********************************************** <span class="text-xs text-slate-600 font-mono">[cite: 10]</span><br>
+                            localhost login: <span class="text-xs text-slate-600 font-mono">[cite: 11]</span><br>
+                        </div>
+                        
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold shrink-0">1</span>
+                                <div>
+                                    <strong class="text-gray-900">Trigger the Setup Wizard (Console Access):</strong> <span class="text-xs text-blue-500 font-mono">[cite: 13, 14]</span> Type <code>setup</code> at the prompt and press Enter. <span class="text-xs text-blue-500 font-mono">[cite: 15]</span> This launches the interactive Cisco Application Deployment Engine Operating System (ADE-OS) wizard. <span class="text-xs text-blue-500 font-mono">[cite: 16]</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold shrink-0">2</span>
+                                <div>
+                                    <strong class="text-gray-900">Configure Core Network Parameters (IP and Routing):</strong> <span class="text-xs text-blue-500 font-mono">[cite: 18, 19]</span> The wizard will prompt you to enter essential details. You must provide: <span class="text-xs text-blue-500 font-mono">[cite: 20]</span> Hostname (e.g., ise-pan-01), <span class="text-xs text-blue-500 font-mono">[cite: 21]</span> IP Address & Subnet Mask, <span class="text-xs text-blue-500 font-mono">[cite: 22]</span> and Default Gateway. <span class="text-xs text-blue-500 font-mono">[cite: 23]</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold shrink-0">3</span>
+                                <div>
+                                    <strong class="text-gray-900">Define Network Infrastructure Dependencies (DNS & NTP):</strong> <span class="text-xs text-blue-500 font-mono">[cite: 25, 26]</span> Next, enter your network services. <span class="text-xs text-blue-500 font-mono">[cite: 27]</span> DNS Server IP(s) and your Domain Name (Crucial: Forward and reverse DNS lookups must be configured on your DNS server for this IP before doing this). <span class="text-xs text-blue-500 font-mono">[cite: 28]</span> NTP Server IP(s) (Time synchronization is strictly mandatory for ISE nodes to form a cluster or trust certificates). <span class="text-xs text-blue-500 font-mono">[cite: 29]</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold shrink-0">4</span>
+                                <div>
+                                    <strong class="text-gray-900">Set Up Administrative Credentials (CLI Admin):</strong> <span class="text-xs text-blue-500 font-mono">[cite: 31, 32]</span> Create the CLI administrator username (usually admin) and set a strong password. <span class="text-xs text-blue-500 font-mono">[cite: 33]</span> This credential is used for SSH and console access. <span class="text-xs text-blue-500 font-mono">[cite: 34]</span> Once you complete the wizard, the appliance will save the configuration and automatically reboot. <span class="text-xs text-blue-500 font-mono">[cite: 35]</span> This initial process takes about 15 to 20 minutes to compile. <span class="text-xs text-blue-500 font-mono">[cite: 36]</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="mt-10 border-t pt-8">
+                            <h4 class="text-xl font-bold text-gray-900 mb-4">2. The Golden Command: Verifying the Services <span class="text-xs text-blue-500 font-mono">[cite: 37]</span></h4>
+                            <p class="text-gray-700 mb-4">After the reboot, you will face a standard CLI login prompt. Log in with the credentials you just created. <span class="text-xs text-blue-500 font-mono">[cite: 38, 39]</span> Do not attempt to open a web browser yet. Even though the box has booted, the underlying heavy-duty ISE application processes take a significant amount of time to spin up. <span class="text-xs text-blue-500 font-mono">[cite: 40]</span> You must verify their state first. <span class="text-xs text-blue-500 font-mono">[cite: 41]</span> Run the most important verification command in the ISE lexicon: <span class="text-xs text-blue-500 font-mono">[cite: 42]</span></p>
+                            
+                            <div class="bg-slate-950 text-emerald-400 p-6 rounded-2xl font-mono text-sm mb-4 overflow-x-auto shadow-inner">
+                                <span class="text-slate-500">Plaintext <span class="text-xs text-slate-600 font-mono">[cite: 43]</span></span><br>
+                                show application status ise <span class="text-xs text-slate-600 font-mono">[cite: 44]</span>
+                            </div>
+                            
+                            <p class="text-gray-700 mb-4">You will see a list of processes initialize. You are waiting for the Application Server process to transition from not running or initializing into the running state. <span class="text-xs text-blue-500 font-mono">[cite: 45]</span></p>
+                            
+                            <div class="bg-slate-950 text-slate-300 p-6 rounded-2xl font-mono text-sm mb-4 overflow-x-auto shadow-inner">
+                                <span class="text-slate-500">Plaintext <span class="text-xs text-slate-600 font-mono">[cite: 46]</span></span><br>
+                                ise-pan-01/admin# show application status ise <span class="text-xs text-slate-600 font-mono">[cite: 47]</span><br>
+                                ISE PROCESS NAME                       STATE            PROCESS ID <span class="text-xs text-slate-600 font-mono">[cite: 48]</span><br>
+                                -------------------------------------------------------------------- <span class="text-xs text-slate-600 font-mono">[cite: 49]</span><br>
+                                Database Listener                      running          14890 <span class="text-xs text-slate-600 font-mono">[cite: 50]</span><br>
+                                Database Server                        running          70 PROCESSES <span class="text-xs text-slate-600 font-mono">[cite: 51]</span><br>
+                                <span class="text-emerald-400 font-bold">Application Server                     running          19158</span> <span class="text-xs text-slate-600 font-mono">[cite: 52]</span><br>
+                                Profiler Database                      running          16293 <span class="text-xs text-slate-600 font-mono">[cite: 53]</span><br>
+                                ... <span class="text-xs text-slate-600 font-mono">[cite: 54]</span>
+                            </div>
+
+                            <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl mt-6 text-amber-900 text-sm">
+                                <strong>⚠️ Patience is Key:</strong> It can take anywhere from 10 to 20+ minutes after a reboot for the Application Server to show as running. <span class="text-xs text-amber-700 font-mono">[cite: 55]</span> If you try to HTTPS into the box before this says running, you will get a "Page Cannot Be Displayed" web error. <span class="text-xs text-amber-700 font-mono">[cite: 56]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-md">
+                    <div class="bg-slate-900 p-8 text-white">
+                        <h3 class="text-3xl font-bold flex items-center gap-4"><i class="fa-solid fa-passport text-blue-400"></i> Phase 2: First-Time GUI Login & Trust Infrastructure</h3>
+                        <p class="mt-2 text-slate-300">Once the CLI shows the Application Server is fully up, you can open your web browser and navigate to your configured IP via HTTPS: <code>https://&lt;your_ise_ip_address&gt;/admin</code>. <span class="text-xs text-blue-300 font-mono">[cite: 58]</span> Log in using the same admin credentials you configured during the console setup. <span class="text-xs text-blue-300 font-mono">[cite: 59, 60]</span></p>
+                    </div>
+                    <div class="p-8 md:p-10">
+                        <p class="text-gray-700 mb-6">Upon the glorious first login, you will be prompted to accept the EULA and navigate past the initial smart licensing banners. <span class="text-xs text-blue-500 font-mono">[cite: 61]</span> Out of the box, ISE automatically activates a 90-day Evaluation License, allowing you to test out all functionalities (such as Premier, Advantage, and Device Admin/TACACS+) with a limit of 100 endpoints before you need to connect it to your Cisco Smart Account. <span class="text-xs text-blue-500 font-mono">[cite: 62, 63]</span></p>
+                        
+                        <p class="text-gray-700 mb-8 font-medium">From here, your very next logical tasks are to install your trusted CA Certificates and integrate the box into your Active Directory or external identity store. <span class="text-xs text-blue-500 font-mono">[cite: 64]</span> Now that the appliance is up and running, you can log into the web GUI. <span class="text-xs text-blue-500 font-mono">[cite: 65]</span> However, before you start adding network devices or creating authentication rules, you must establish the identity and trust infrastructure. <span class="text-xs text-blue-500 font-mono">[cite: 66]</span> Without these next steps, the ISE box cannot securely communicate with your network, your endpoints, or your administrative accounts. <span class="text-xs text-blue-500 font-mono">[cite: 67]</span> Here is the exact sequence to move from a freshly booted box to a production-ready node: <span class="text-xs text-blue-500 font-mono">[cite: 68]</span></p>
+
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <div class="bg-gray-50 border rounded-2xl p-6">
+                                <h4 class="text-lg font-bold text-gray-900 mb-3 text-[#0072B8]">1. Join Active Directory</h4>
+                                <p class="text-sm text-gray-600 mb-3">Since you are managing a large-scale enterprise environment, your users and machine accounts likely live in Active Directory (AD). <span class="text-xs text-blue-500 font-mono">[cite: 70]</span> Joining ISE to the domain is the absolute first configuration task. <span class="text-xs text-blue-500 font-mono">[cite: 71]</span></p>
+                                <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
+                                    <li><strong>Administration:</strong> In the ISE GUI, go to the menu and choose Active Directory (Identity Management > External Identity Sources). <span class="text-xs text-blue-500 font-mono">[cite: 72, 73, 74]</span> Click Add, enter your Active Directory Domain Name (e.g., corp.local), and give the connection a name. <span class="text-xs text-blue-500 font-mono">[cite: 75]</span> Click Submit. <span class="text-xs text-blue-500 font-mono">[cite: 76]</span></li>
+                                    <li><strong>Provide Join Credentials:</strong> ISE will ask if you want to join all nodes to the domain. Click Join. <span class="text-xs text-blue-500 font-mono">[cite: 77, 78]</span> You will be prompted to enter the username and password of an AD account with permissions to add computer objects to the domain. <span class="text-xs text-blue-500 font-mono">[cite: 79]</span></li>
+                                    <li><strong>Select Relevant AD Groups:</strong> Once the status changes to Operational, click on the Groups tab. <span class="text-xs text-blue-500 font-mono">[cite: 80, 81]</span> Click Select Groups from AD, search for, and check the boxes for the groups you will use in your policies (e.g., Domain Computers, Domain Users, Network_Admins). <span class="text-xs text-blue-500 font-mono">[cite: 82]</span> Click Save. <span class="text-xs text-blue-500 font-mono">[cite: 83]</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-gray-50 border rounded-2xl p-6">
+                                <h4 class="text-lg font-bold text-gray-900 mb-3 text-[#0072B8]">2. Generate and Install Certificates</h4>
+                                <p class="text-sm text-gray-600 mb-3">Out of the box, ISE uses self-signed certificates. This causes browser warning errors for admins and, more importantly, will cause 802.1X authentications to fail because endpoints will not trust a self-signed certificate. <span class="text-xs text-blue-500 font-mono">[cite: 85]</span> You need to replace these with certificates signed by your Internal Enterprise Certificate Authority (CA). <span class="text-xs text-blue-500 font-mono">[cite: 86]</span></p>
+                                <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
+                                    <li><strong>Step A (Generate CSR):</strong> Go to Administration > System > Certificates > Certificate Signing Requests. <span class="text-xs text-blue-500 font-mono">[cite: 87, 88]</span> Click Generate Certificate Signing Requests (CSR). <span class="text-xs text-blue-500 font-mono">[cite: 89]</span> Choose the usage (Select Multi-Use to cover both EAP authentication and Admin GUI access). <span class="text-xs text-blue-500 font-mono">[cite: 90]</span> Select your ISE node, fill out the Subject fields (Common Name = your ISE FQDN), and ensure you add the FQDN and IP address to the Subject Alternative Name (SAN) fields. <span class="text-xs text-blue-500 font-mono">[cite: 91]</span> Click Generate and then Export the CSR text file. <span class="text-xs text-blue-500 font-mono">[cite: 92]</span></li>
+                                    <li><strong>Step B (Submit & Bind):</strong> Take that CSR text, paste it into your internal CA web enrollment tool, and download the issued certificate in .cer or .p7b format. <span class="text-xs text-blue-500 font-mono">[cite: 93, 94]</span> Also, download your CA's Root/Certificate Chain. <span class="text-xs text-blue-500 font-mono">[cite: 95]</span> Back in ISE, go to Trusted Certificates and click Import. Upload your CA's Root and Intermediate certificates first so ISE trusts the issuer. <span class="text-xs text-blue-500 font-mono">[cite: 96, 97]</span> Go back to Certificate Signing Requests, check the box next to your pending CSR, and click Bind Certificate. <span class="text-xs text-blue-500 font-mono">[cite: 98]</span> Upload the issued certificate file, give it a friendly name, and check the boxes to assign it for Admin (GUI access) and EAP Authentication (for dot1x). <span class="text-xs text-blue-500 font-mono">[cite: 99]</span></li>
+                                </ul>
+                                <p class="text-xs text-red-600 mt-2 font-medium">🔄 Note: Saving this will cause the ISE application services to restart automatically to apply the new certificate. It will take another 10–15 minutes to come back online. <span class="text-xs text-red-500 font-mono">[cite: 100, 101]</span></p>
+                            </div>
+                        </div>
+
+                        <div class="mt-10">
+                            <h4 class="text-xl font-bold text-gray-900 mb-4">3. Define the Network Device Groups & NADs</h4>
+                            <p class="text-gray-700 mb-4">Once the box comes back up with its trusted certificate and AD connection, you must tell ISE which Network Access Devices (NADs)—your switches, wireless controllers, and VPN gateways—are allowed to talk to it. <span class="text-xs text-blue-500 font-mono">[cite: 102, 103]</span></p>
+                            
+                            <div class="overflow-x-auto border border-gray-200 rounded-2xl shadow-sm mb-8">
+                                <table class="min-w-full divide-y divide-gray-200 bg-white text-left text-sm">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="px-6 py-3.5 font-semibold text-gray-900">Step</th>
+                                            <th class="px-6 py-3.5 font-semibold text-gray-900">Action</th>
+                                            <th class="px-6 py-3.5 font-semibold text-gray-900">Why It Matters</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200 text-gray-700">
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium whitespace-nowrap">1. Create Groups <span class="text-xs text-blue-500 font-mono">[cite: 104]</span></td>
+                                            <td class="px-6 py-4">Go to Administration > Network Resources > Network Device Groups. Organize by Location or Device Type (e.g., Switches_Access, Firewalls_VPN). <span class="text-xs text-blue-500 font-mono">[cite: 104]</span></td>
+                                            <td class="px-6 py-4">Simplifies policy writing later. You can apply one rule to an entire group of devices instead of individual IPs. <span class="text-xs text-blue-500 font-mono">[cite: 104]</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium whitespace-nowrap">2. Add the NAD <span class="text-xs text-blue-500 font-mono">[cite: 104]</span></td>
+                                            <td class="px-6 py-4">Go to Network Devices and click Add. Enter the Name, IP address (or subnet), and assign it to the groups you made. <span class="text-xs text-blue-500 font-mono">[cite: 104]</span></td>
+                                            <td class="px-6 py-4">Tells ISE to listen for RADIUS/TACACS requests coming from this specific source IP. <span class="text-xs text-blue-500 font-mono">[cite: 104]</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium whitespace-nowrap">3. Set Shared Secrets <span class="text-xs text-blue-500 font-mono">[cite: 104]</span></td>
+                                            <td class="px-6 py-4">Scroll down to RADIUS Settings / TACACS Settings, check the box, and enter a secure Shared Secret. <span class="text-xs text-blue-500 font-mono">[cite: 104]</span></td>
+                                            <td class="px-6 py-4">This password must match exactly what you configure on your switch or firewall CLI (radius-server key <secret>). <span class="text-xs text-blue-500 font-mono">[cite: 104]</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 bg-blue-50 border border-blue-100 rounded-2xl p-6">
+                            <h4 class="text-lg font-bold text-[#0072B8] mb-2">4. Map GUI Administrators to Active Directory</h4>
+                            <p class="text-gray-700 text-sm mb-2">As a best practice, you should never share the local CLI/GUI admin account created during setup. <span class="text-xs text-blue-500 font-mono">[cite: 106]</span> Now that AD is linked, map your team's network admin group to ISE GUI administration. <span class="text-xs text-blue-500 font-mono">[cite: 107]</span></p>
+                            <p class="text-gray-700 text-sm">Go to Administration > System > Admin Access > Administrators > Admin Groups. <span class="text-xs text-blue-500 font-mono">[cite: 108]</span> Click Add and create an external group mapped to your AD Network_Admins group. <span class="text-xs text-blue-500 font-mono">[cite: 109]</span> Go to Admin Access > Authorization > Permissions (or Policy) and assign this external group the Super Admin menu access privilege. <span class="text-xs text-blue-500 font-mono">[cite: 110]</span> Now your foundational prep work is complete. The ISE box is secure, integrated into your corporate network identity, and ready for you to build out your actual Authentication and Authorization policies. <span class="text-xs text-blue-500 font-mono">[cite: 111]</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-md">
+                    <div class="bg-slate-900 p-8 text-white">
+                        <h3 class="text-3xl font-bold flex items-center gap-4"><i class="fa-solid fa-list-check text-emerald-400"></i> Phase 3: Core Engine Setup & Policies</h3>
+                        <p class="mt-2 text-slate-300">Now that your ISE box is securely tied to Active Directory, trusts your internal Certificate Authority, and knows about your Network Access Devices (NADs), you are ready for the core engine setup: building your first actual policies. <span class="text-xs text-blue-300 font-mono">[cite: 112]</span> At this stage, you want to set up the logical progression that handles incoming connection requests. <span class="text-xs text-blue-300 font-mono">[cite: 113]</span> In ISE, this means configuring Allowed Protocols, defining Policy Elements (Results), and finally constructing your Authentication and Authorization Policies. <span class="text-xs text-blue-300 font-mono">[cite: 114, 115]</span></p>
+                    </div>
+                    <div class="p-8 md:p-10">
+                        <div class="space-y-8">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">1. Configure the Allowed Protocols <span class="text-xs text-blue-500 font-mono">[cite: 116]</span></h4>
+                                <p class="text-sm text-gray-700">Before writing rules, you need to tell ISE how it is allowed to negotiate security protocols with endpoints. <span class="text-xs text-blue-500 font-mono">[cite: 117]</span> Navigate to Policy > Policy Elements > Results > Authentication > Allowed Protocols. <span class="text-xs text-blue-500 font-mono">[cite: 118]</span> Click Add to create a custom service, or inspect the Default Network Access profile. <span class="text-xs text-blue-500 font-mono">[cite: 119]</span> For enterprise security (like machine/user authentications), ensure PEAP (Protected Extensible Authentication Protocol) and EAP-TLS (if using client certificates) are enabled. <span class="text-xs text-blue-500 font-mono">[cite: 120]</span> For security, uncheck insecure protocols like PAP/ASCII or LEAP unless an old legacy device explicitly requires them. Click Save. <span class="text-xs text-blue-500 font-mono">[cite: 121, 122]</span></p>
+                            </div>
+
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">2. Define Your Authorization Profiles (The "What You Get" Phase) <span class="text-xs text-blue-500 font-mono">[cite: 123]</span></h4>
+                                <p class="text-sm text-gray-700 mb-3">An Authorization Profile dictates the network payload or permission configuration that ISE pushes down to a switch port or wireless controller after a user successfully authenticates. <span class="text-xs text-blue-500 font-mono">[cite: 124]</span> Go to Policy > Policy Elements > Results > Authorization > Authorization Profiles and click Add. <span class="text-xs text-blue-500 font-mono">[cite: 125, 126, 127]</span></p>
+                                <ul class="text-sm text-gray-700 space-y-1 list-disc pl-5">
+                                    <li><strong>Create a Compliant Profile (e.g., Employee Access):</strong> <span class="text-xs text-blue-500 font-mono">[cite: 128]</span> Name the profile (e.g., Employee_Access_Profile). Under Common Tasks, check the VLAN box and type your corporate VLAN ID or name (e.g., 10 or VLAN_Employees). You can also specify a downloadable ACL (dACL) if filtering traffic at the port level. <span class="text-xs text-blue-500 font-mono">[cite: 129, 130]</span></li>
+                                    <li><strong>Create a Quarantine/Non-Compliant Profile:</strong> <span class="text-xs text-blue-500 font-mono">[cite: 131]</span> Create a second profile named Quarantine_Profile. Map this to a restricted guest or remediation VLAN. This is where you will dump devices that fail authentication or profiling checks. <span class="text-xs text-blue-500 font-mono">[cite: 132, 133]</span></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">3. Construct the Authentication Policy <span class="text-xs text-blue-500 font-mono">[cite: 134]</span></h4>
+                                <p class="text-sm text-gray-700 mb-3">Now we build the actual decision matrix under Policy > Policy Sets. <span class="text-xs text-blue-500 font-mono">[cite: 135]</span> If you are using the default policy set, click the > arrow on the right to view its inner rules. <span class="text-xs text-blue-500 font-mono">[cite: 136]</span> First, you hit the Authentication Policy section. This determines who you are checking and where to look. <span class="text-xs text-blue-500 font-mono">[cite: 137]</span></p>
+                                <div class="bg-gray-100 p-4 rounded-xl font-mono text-xs text-gray-800 mb-3">
+                                    Authentication Rule Strategy: <span class="text-xs text-gray-500 font-mono">[cite: 139]</span><br>
+                                    IF [ Wired_802.1X ] THEN USE [ Active_Directory ] <span class="text-xs text-gray-500 font-mono">[cite: 140]</span>
+                                </div>
+                                <ul class="text-sm text-gray-700 space-y-1 list-disc pl-5">
+                                    <li><strong>Create a Rule:</strong> Click the + icon to add an authentication rule. <span class="text-xs text-blue-500 font-mono">[cite: 141]</span></li>
+                                    <li><strong>Conditions:</strong> Choose a pre-defined condition like Wired_802.1X or Wireless_802.1X (ISE evaluates the incoming RADIUS attributes to match this). <span class="text-xs text-blue-500 font-mono">[cite: 142]</span></li>
+                                    <li><strong>Use Identity Store:</strong> Change this from Internal Users to the Active Directory instance you joined in the previous step. <span class="text-xs text-blue-500 font-mono">[cite: 143]</span> This tells ISE: "If someone plugs into a dot1x port, check their credentials against our Windows domain controller." <span class="text-xs text-blue-500 font-mono">[cite: 144]</span></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">4. Construct the Authorization Policy <span class="text-xs text-blue-500 font-mono">[cite: 145]</span></h4>
+                                <p class="text-sm text-gray-700 mb-4">Directly beneath the authentication rules is the Authorization Policy. This determines what permissions the authenticated entity actually receives. <span class="text-xs text-blue-500 font-mono">[cite: 146]</span> It evaluates from top to bottom, stopping at the first rule matched. <span class="text-xs text-blue-500 font-mono">[cite: 147]</span> You want to build a tiered policy structure that maps your Active Directory groups to the Authorization Profiles you built in Step 2. <span class="text-xs text-blue-500 font-mono">[cite: 148]</span></p>
+                                
+                                <div class="overflow-x-auto border border-gray-200 rounded-2xl shadow-sm mb-4">
+                                    <table class="min-w-full divide-y divide-gray-200 bg-white text-left text-sm">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th class="px-6 py-3.5 font-semibold text-gray-900">Rule Name</th>
+                                                <th class="px-6 py-3.5 font-semibold text-gray-900">Condition (Who matches)</th>
+                                                <th class="px-6 py-3.5 font-semibold text-gray-900">Profile/Result (What they get)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-gray-200 text-gray-700 font-mono text-xs">
+                                            <tr>
+                                                <td class="px-6 py-4">Domain_Admins_Rule <span class="text-xs text-blue-500 font-mono">[cite: 149]</span></td>
+                                                <td class="px-6 py-4">ExternalGroups EQUALS corp.local/Network_Admins <span class="text-xs text-blue-500 font-mono">[cite: 149]</span></td>
+                                                <td class="px-6 py-4 text-emerald-600 font-bold">PermitAccess (or full admin access) <span class="text-xs text-blue-500 font-mono">[cite: 149]</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-6 py-4">Corporate_Laptops <span class="text-xs text-blue-500 font-mono">[cite: 149]</span></td>
+                                                <td class="px-6 py-4">ExternalGroups EQUALS corp.local/Domain Computers <span class="text-xs text-blue-500 font-mono">[cite: 149]</span></td>
+                                                <td class="px-6 py-4 text-blue-600 font-bold">Employee_Access_Profile (VLAN 10) <span class="text-xs text-blue-500 font-mono">[cite: 149]</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-6 py-4">Default <span class="text-xs text-blue-500 font-mono">[cite: 149]</span></td>
+                                                <td class="px-6 py-4">Any <span class="text-xs text-blue-500 font-mono">[cite: 149]</span></td>
+                                                <td class="px-6 py-4 text-red-600 font-bold">DenyAccess (Blocks everything else by default) <span class="text-xs text-blue-500 font-mono">[cite: 149]</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="text-xs text-gray-600">💡 <strong>Pro-Tip for Large Deployments:</strong> Always keep the final Default fallback rule set to DenyAccess. <span class="text-xs text-blue-500 font-mono">[cite: 150]</span> This enforces a zero-trust model out-of-the-box, ensuring any device that isn't explicitly accounted for in your higher rules gets shut down at the port. <span class="text-xs text-blue-500 font-mono">[cite: 151]</span></p>
+                            </div>
+
+                            <div class="bg-gray-900 text-gray-300 p-6 rounded-2xl">
+                                <h4 class="text-lg font-bold text-white mb-2">5. Put a Test Port in "Monitor Mode" <span class="text-xs text-blue-500 font-mono">[cite: 152]</span></h4>
+                                <p class="text-sm mb-3">Do not flip your entire infrastructure to enforcing mode yet! To verify everything works without breaking production traffic: Configure a single test switch port with standard 802.1X syntax. <span class="text-xs text-blue-500 font-mono">[cite: 153, 154]</span></p>
+                                <p class="text-sm mb-3">Ensure you apply the command <code class="bg-gray-800 text-emerald-400 px-2 py-1 rounded">authentication open</code> on that specific switch interface. <span class="text-xs text-blue-500 font-mono">[cite: 155]</span> This puts the port in Monitor Mode—the switch will send RADIUS requests to ISE, but it won't actually block the traffic if it fails. <span class="text-xs text-blue-500 font-mono">[cite: 156]</span></p>
+                                <p class="text-sm">Plug in a test machine, and immediately open the ISE RADIUS Live Logs (Operations > RADIUS > Live Logs). <span class="text-xs text-blue-500 font-mono">[cite: 157]</span> Watch the real-time lines turn <span class="text-emerald-400 font-bold">Green</span> (Success) or <span class="text-rose-400 font-bold">Red</span> (Failure) to tweak your rules before a wider deployment. <span class="text-xs text-blue-500 font-mono">[cite: 158]</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-md">
+                    <div class="bg-slate-900 p-8 text-white">
+                        <h3 class="text-3xl font-bold flex items-center gap-4"><i class="fa-solid fa-server text-purple-400"></i> Phase 4: High Availability & Maintenance</h3>
+                        <p class="mt-2 text-slate-300">Now that your core policies are built and you are monitoring authentication requests in your test environment, the final operational phase of a new deployment shifts focus to high availability, visibility, and system maintenance. <span class="text-xs text-blue-300 font-mono">[cite: 159]</span> You have a functioning single box, but to make it a resilient enterprise deployment, you need to execute these final foundational steps: <span class="text-xs text-blue-300 font-mono">[cite: 160]</span></p>
+                    </div>
+                    <div class="p-8 md:p-10">
+                        <div class="grid md:grid-cols-2 gap-10">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg mb-2">1. Backup Repository Setup <span class="text-xs text-blue-500 font-mono">[cite: 161]</span></h4>
+                                <p class="text-sm text-gray-700 mb-3">Before doing anything else, you must protect your hard work. ISE cannot run backups to its own local hard drive; it requires an external storage location called a Repository. <span class="text-xs text-blue-500 font-mono">[cite: 162, 163]</span></p>
+                                <ul class="text-sm text-gray-700 space-y-1 list-disc pl-5 mb-4">
+                                    <li><strong>Define Repository:</strong> Go to Administration > System > Maintenance > Repository and click Add. Configure a secure remote destination using SFTP or NFS (e.g., Protocol: SFTP, Server/IP, Path). <span class="text-xs text-blue-500 font-mono">[cite: 164-170]</span></li>
+                                    <li><strong>Schedule Backups:</strong> Navigate to Administration > System > Maintenance > Backup & Restore and set up a recurring schedule. <span class="text-xs text-blue-500 font-mono">[cite: 171, 172]</span></li>
+                                    <li>You need two types: <strong>Operational Backup (Configuration)</strong> contains your configuration, AD join info, and policy sets. (Run daily/weekly). <span class="text-xs text-blue-500 font-mono">[cite: 173, 174]</span> <strong>M&T Backup (Operational Data)</strong> contains RADIUS logs, reporting data, and session histories. (Run weekly/monthly). <span class="text-xs text-blue-500 font-mono">[cite: 175, 176]</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg mb-2">2. Secondary Node for HA <span class="text-xs text-blue-500 font-mono">[cite: 177]</span></h4>
+                                <p class="text-sm text-gray-700 mb-3">In a deployment supporting thousands of users, a single ISE box represents a single point of failure. If you have a second ISE appliance, you must join it to the first to create a Deployment Cluster. <span class="text-xs text-blue-500 font-mono">[cite: 178, 179]</span></p>
+                                <div class="bg-slate-900 text-slate-300 p-4 rounded-xl font-mono text-xs mb-3 text-center">
+                                    [ Primary PAN / MNT ] <span class="text-xs text-slate-500 font-mono">[cite: 181]</span><br>
+                                    │  (Replication via TCP 1521/443) <span class="text-xs text-slate-500 font-mono">[cite: 182]</span><br>
+                                    ▼ <span class="text-xs text-slate-500 font-mono">[cite: 183]</span><br>
+                                    [ Secondary PAN / MNT ] <span class="text-xs text-slate-500 font-mono">[cite: 184]</span>
+                                </div>
+                                <ul class="text-sm text-gray-700 space-y-1 list-disc pl-5">
+                                    <li><strong>Prepare Node:</strong> Run the CLI setup wizard on the second appliance with identical NTP/DNS. <span class="text-xs text-blue-500 font-mono">[cite: 185, 186]</span></li>
+                                    <li><strong>Register:</strong> In Primary GUI > Administration > System > Deployment, click Register and enter the second box's credentials. <span class="text-xs text-blue-500 font-mono">[cite: 187, 188]</span></li>
+                                    <li><strong>Assign Personas:</strong> Make the second box the Secondary PAN and Secondary MNT. <span class="text-xs text-blue-500 font-mono">[cite: 189, 190]</span> Click Save. The sync process takes 20-30 minutes. <span class="text-xs text-blue-500 font-mono">[cite: 191, 192]</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-10 mt-10 border-t pt-8">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg mb-2">3. System Logging and Alerts <span class="text-xs text-blue-500 font-mono">[cite: 193]</span></h4>
+                                <p class="text-sm text-gray-700 mb-2">Hook ISE into your proactive monitoring infrastructure. <span class="text-xs text-blue-500 font-mono">[cite: 194]</span></p>
+                                <p class="text-sm text-gray-700 mb-2"><strong>SMTP:</strong> Go to Administration > System > Settings > SMTP Server. Enter your corporate mail relay IP. Then go to Administration > System > Alarm Settings to configure email alerts for critical system thresholds (CPU spikes, AD disconnects, cert warnings). <span class="text-xs text-blue-500 font-mono">[cite: 195, 196, 197]</span></p>
+                                <p class="text-sm text-gray-700"><strong>SIEM:</strong> Go to Administration > System > Logging > Remote Logging Targets. Click Add to point ISE towards your centralized syslog server or SIEM (like Splunk) for long-term auditing. <span class="text-xs text-blue-500 font-mono">[cite: 198, 199, 200, 201]</span></p>
+                            </div>
+
+                            <div class="bg-rose-50 border border-rose-100 p-6 rounded-2xl">
+                                <h4 class="font-bold text-rose-900 text-lg mb-2">4. Enforcement Mode <span class="text-xs text-blue-500 font-mono">[cite: 202]</span></h4>
+                                <p class="text-sm text-rose-800 mb-3">Once you have verified in the RADIUS Live Logs that your production devices are hitting the correct rules and turning Green, you are ready to transition your network switches out of test mode. <span class="text-xs text-blue-500 font-mono">[cite: 203]</span> On your access layer switches, remove the safety net configuration from the interfaces: <span class="text-xs text-blue-500 font-mono">[cite: 204]</span></p>
+                                <div class="bg-slate-900 text-slate-300 p-3 rounded-lg font-mono text-xs mb-3">
+                                    interface GigabitEthernet1/0/1 <span class="text-xs text-slate-500 font-mono">[cite: 206]</span><br>
+                                    <span class="text-rose-400 font-bold">no authentication open</span> <span class="text-xs text-slate-500 font-mono">[cite: 207]</span>
+                                </div>
+                                <p class="text-sm text-rose-800">With authentication open removed, the switch port will now actively drop traffic and block unauthorized users, transitioning your environment into a true Zero-Trust Secure Network Access posture. <span class="text-xs text-blue-500 font-mono">[cite: 208]</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-md">
+                    <div class="bg-slate-900 p-8 text-white">
+                        <h3 class="text-3xl font-bold flex items-center gap-4"><i class="fa-solid fa-microchip text-cyan-400"></i> Phase 5: SD-Access & Catalyst Center TACACS+ Integration</h3>
+                        <p class="mt-2 text-slate-300">Now we are shifting gears from basic ISE platform setup into Cisco Software-Defined Access (SD-Access) / Campus Fabric territory. <span class="text-xs text-blue-300 font-mono">[cite: 209]</span> When you say you want a Super Admin with all access in a Fabric Site, you are talking about setting up RBAC (Role-Based Access Control) for the orchestrator controlling that fabric site—which is Cisco Catalyst Center (formerly Cisco DNA Center)—and utilizing ISE as the central identity engine via TACACS+ (Device Administration). <span class="text-xs text-blue-300 font-mono">[cite: 210]</span></p>
+                    </div>
+                    <div class="p-8 md:p-10 space-y-6">
+                        
+                        <div>
+                            <h4 class="text-lg font-bold text-gray-900">Step 1: Enable TACACS+ and Build Profile in ISE <span class="text-xs text-blue-500 font-mono">[cite: 212]</span></h4>
+                            <p class="text-sm text-gray-700 mb-2">By default, ISE only handles RADIUS. You must ensure the Device Administration Service is checked under Administration > System > Deployment. <span class="text-xs text-blue-500 font-mono">[cite: 213, 214, 215, 216]</span> Then, for Catalyst Center to know a user is a "Super Admin," ISE must pass back a specific string attribute: <code>ROLE=SUPER-ADMIN</code>. <span class="text-xs text-blue-500 font-mono">[cite: 217, 218, 219]</span></p>
+                            <p class="text-sm text-gray-700">Go to Work Centers > Device Administration > Policy Elements > Results > TACACS Outputs and click Add. <span class="text-xs text-blue-500 font-mono">[cite: 220, 221, 222]</span> Name the Shell Profile (e.g., Catalyst_Center_Super_Admin) with Default Privilege 15. <span class="text-xs text-blue-500 font-mono">[cite: 223, 224]</span> Under Custom Attributes, add Mandatory Attribute <code>cisco-av-pair</code> with Value <code>ROLE=SUPER-ADMIN</code> and Save. <span class="text-xs text-blue-500 font-mono">[cite: 225-230]</span></p>
+                        </div>
+
+                        <div>
+                            <h4 class="text-lg font-bold text-gray-900">Step 2: Add Catalyst Center as TACACS Client & Policy <span class="text-xs text-blue-500 font-mono">[cite: 231, 238]</span></h4>
+                            <p class="text-sm text-gray-700 mb-2">In ISE (Administration > Network Resources > Network Devices), add the Catalyst Center IP, check TACACS Authentication Settings, and enter a Shared Secret. <span class="text-xs text-blue-500 font-mono">[cite: 232-237]</span></p>
+                            <p class="text-sm text-gray-700">Next, under Work Centers > Device Administration > Device Admin Policy Sets, create a set matching the Catalyst Center IP. <span class="text-xs text-blue-500 font-mono">[cite: 239-242]</span> Inside the set, point the Authentication Policy to Active Directory. <span class="text-xs text-blue-500 font-mono">[cite: 243, 244, 245]</span> In Authorization, map your AD Admin group to the <code>Catalyst_Center_Super_Admin</code> shell profile. <span class="text-xs text-blue-500 font-mono">[cite: 246-249]</span></p>
+                        </div>
+
+                        <div>
+                            <h4 class="text-lg font-bold text-gray-900">Step 3: Point Catalyst Center to ISE & Verify <span class="text-xs text-blue-500 font-mono">[cite: 250, 289]</span></h4>
+                            <p class="text-sm text-gray-700 mb-2">Log into Catalyst Center using the local fallback <code>admin</code> account (https://&lt;catalyst_center_ip&gt;). <span class="text-xs text-blue-500 font-mono">[cite: 251, 252, 264-271]</span> Navigate to System > Settings > Authentication Server, add a TACACS+ server with your ISE IP and exact Shared Secret. <span class="text-xs text-blue-500 font-mono">[cite: 253, 254, 255, 256, 272-281]</span></p>
+                            <p class="text-sm text-gray-700 mb-2">Scroll down to Role Mapping, Add Role Mapping: Server Attribute <code>SUPER-ADMIN</code> mapped to Catalyst Center Role <code>SUPER-ADMIN</code>. <span class="text-xs text-blue-500 font-mono">[cite: 282-288]</span></p>
+                            <p class="text-sm text-gray-700">Finally, open an Incognito browser, navigate to Catalyst Center, and log in with your corporate AD credentials. <span class="text-xs text-blue-500 font-mono">[cite: 290-298]</span> You should have full Super Admin visibility, and ISE Operations > TACACS > Live Logs will show a green success line. <span class="text-xs text-blue-500 font-mono">[cite: 299-302]</span></p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-md">
+                    <div class="bg-slate-900 p-8 text-white">
+                        <h3 class="text-3xl font-bold flex items-center gap-4"><i class="fa-solid fa-network-wired text-emerald-500"></i> Phase 6: SD-Access Macro & Micro-Segmentation</h3>
+                        <p class="mt-2 text-slate-300">In a Cisco SD-Access Campus Fabric, we no longer manage access using traditional, static IP subnets or complex access-lists (ACLs) applied to every single switch port. <span class="text-xs text-blue-300 font-mono">[cite: 303]</span> Instead, we use a two-tier policy model controlled centrally by Cisco Catalyst Center and enforced by Cisco ISE: <span class="text-xs text-blue-300 font-mono">[cite: 304]</span></p>
+                        <ul class="mt-4 list-disc pl-5 text-sm text-slate-300">
+                            <li><strong>Macro-Segmentation (Virtual Networks):</strong> Equivalent to VRFs. Devices in separate VNs cannot talk to each other unless traffic passes through an external firewall. <span class="text-xs text-blue-300 font-mono">[cite: 305]</span></li>
+                            <li><strong>Micro-Segmentation (SGTs):</strong> Happens inside a Virtual Network. We assign users to Scalable Group Tags (SGTs) like "Finance-Users" and write matrix rules. <span class="text-xs text-blue-300 font-mono">[cite: 306, 307]</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-8 md:p-10">
+                        <h4 class="text-xl font-bold text-gray-900 mb-4">Fabric Site Scenario & Blueprint <span class="text-xs text-blue-500 font-mono">[cite: 308, 309, 315]</span></h4>
+                        <p class="text-sm text-gray-700 mb-4">Imagine a Corporate HQ with Finance (needs isolation), HR (standard access), and Security CCTV (IoT isolation). <span class="text-xs text-blue-500 font-mono">[cite: 310-314]</span></p>
+                        
+                        <div class="overflow-x-auto border border-gray-200 rounded-2xl shadow-sm mb-8">
+                            <table class="min-w-full divide-y divide-gray-200 bg-white text-left text-sm">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3.5 font-semibold text-gray-900">Department / Device</th>
+                                        <th class="px-6 py-3.5 font-semibold text-gray-900">Virtual Network (Macro)</th>
+                                        <th class="px-6 py-3.5 font-semibold text-gray-900">Scalable Group Tag (SGT)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 text-gray-700 font-mono text-xs">
+                                    <tr>
+                                        <td class="px-6 py-4">Finance Employees <span class="text-xs text-blue-500 font-mono">[cite: 317]</span></td>
+                                        <td class="px-6 py-4">Finance_VN <span class="text-xs text-blue-500 font-mono">[cite: 317]</span></td>
+                                        <td class="px-6 py-4">SGT_Finance_Users (Tag 10) <span class="text-xs text-blue-500 font-mono">[cite: 317]</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4">Finance Servers <span class="text-xs text-blue-500 font-mono">[cite: 317]</span></td>
+                                        <td class="px-6 py-4">Finance_VN <span class="text-xs text-blue-500 font-mono">[cite: 317]</span></td>
+                                        <td class="px-6 py-4">SGT_Finance_Servers (Tag 11) <span class="text-xs text-blue-500 font-mono">[cite: 317]</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4">HR Employees <span class="text-xs text-blue-500 font-mono">[cite: 317]</span></td>
+                                        <td class="px-6 py-4">Campus_Corp_VN <span class="text-xs text-blue-500 font-mono">[cite: 317]</span></td>
+                                        <td class="px-6 py-4">SGT_HR_Users (Tag 20) <span class="text-xs text-blue-500 font-mono">[cite: 317]</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4">CCTV Cameras <span class="text-xs text-blue-500 font-mono">[cite: 317]</span></td>
+                                        <td class="px-6 py-4">IoT_VN <span class="text-xs text-blue-500 font-mono">[cite: 317]</span></td>
+                                        <td class="px-6 py-4">SGT_CCTV_Devices (Tag 30) <span class="text-xs text-blue-500 font-mono">[cite: 317]</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-8 text-sm text-gray-700">
+                            <div>
+                                <h5 class="font-bold text-gray-900">Provision Macro-Segmentation <span class="text-xs text-blue-500 font-mono">[cite: 318]</span></h5>
+                                <p>In Catalyst Center (Policy > Virtual Networks), create the VNs. <span class="text-xs text-blue-500 font-mono">[cite: 319-322]</span> Bind your local IP subnets to these VNs under Host Pools. <span class="text-xs text-blue-500 font-mono">[cite: 323, 324]</span> Result: A CCTV camera is physically incapable of routing packets to HR. <span class="text-xs text-blue-500 font-mono">[cite: 325, 326]</span></p>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-900">Define SGTs in ISE <span class="text-xs text-blue-500 font-mono">[cite: 327]</span></h5>
+                                <p>In ISE (Work Centers > TrustSec > Components > Scalable Groups), create the SGTs. <span class="text-xs text-blue-500 font-mono">[cite: 328-337]</span> Then, map your AD groups/devices to these SGTs in your ISE Authorization Policy. <span class="text-xs text-blue-500 font-mono">[cite: 338-345]</span></p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 bg-gray-100 p-6 rounded-2xl">
+                            <h5 class="font-bold text-gray-900 text-lg mb-2">Micro-Segmentation Matrix & Deployment <span class="text-xs text-blue-500 font-mono">[cite: 346, 366]</span></h5>
+                            <p class="text-sm text-gray-700 mb-3">In Catalyst Center (Policy > Group-Based Policy), use the SGT Access Control Matrix to write rules inside the VNs. <span class="text-xs text-blue-500 font-mono">[cite: 347, 348, 349, 350]</span></p>
+                            <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5 mb-4">
+                                <li>Create a contract (Deny IP Any Any) to block cameras from talking to each other. <span class="text-xs text-blue-500 font-mono">[cite: 351-355]</span> Apply this where Source and Destination are both SGT_CCTV_Devices. <span class="text-xs text-blue-500 font-mono">[cite: 356-360]</span></li>
+                                <li>Secure the Finance VN: Ensure SGT_Finance_Users to SGT_Finance_Servers is Permitted, but Deny all other misconfigured users access to the servers. <span class="text-xs text-blue-500 font-mono">[cite: 361-365]</span></li>
+                            </ul>
+                            <p class="text-sm text-gray-700">Click Deploy in Catalyst Center. It instantly communicates with ISE, compiling matrix rules into SGACLs on the fabric switches, dropping unauthorized packets instantly at the edge without traditional IP access-lists! <span class="text-xs text-blue-500 font-mono">[cite: 367-372]</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-md">
+                    <div class="bg-slate-900 p-8 text-white">
+                        <h3 class="text-3xl font-bold flex items-center gap-4"><i class="fa-solid fa-shield text-blue-400"></i> Phase 7: Advanced Security Orchestration</h3>
+                        <p class="mt-2 text-slate-300">Beyond standard 802.1X authentication, guest portals, and basic access control, Cisco ISE serves as a massive security orchestration engine. <span class="text-xs text-blue-300 font-mono">[cite: 373]</span> Here is what else you can do when you unleash the full power of your ISE boxes: <span class="text-xs text-blue-300 font-mono">[cite: 374, 375]</span></p>
+                    </div>
+                    <div class="p-8 md:p-10 grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg mb-2">1. Device Profiling <span class="text-xs text-blue-500 font-mono">[cite: 376]</span></h4>
+                            <p class="text-sm text-gray-700">ISE uses Profiling to figure out exactly what a device is without any user intervention. <span class="text-xs text-blue-500 font-mono">[cite: 377, 378]</span> It acts like a network detective using DHCP Probes (OUI matching), HTTP Probes (user-agents), CDP/LLDP Probes, and Nmap Scans. <span class="text-xs text-blue-500 font-mono">[cite: 379-383]</span> You can flag anomalies instantly if a device mimics a printer but uses non-printer ports. <span class="text-xs text-blue-500 font-mono">[cite: 384]</span></p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg mb-2">2. Endpoint Posture Assessment <span class="text-xs text-blue-500 font-mono">[cite: 385]</span></h4>
+                            <p class="text-sm text-gray-700">Posture Assessment checks the health of the endpoint before granting access using Cisco Secure Client. <span class="text-xs text-blue-500 font-mono">[cite: 386-389]</span> It verifies BitLocker, Corporate Antivirus, and more. <span class="text-xs text-blue-500 font-mono">[cite: 390-402]</span> If failed, ISE can automatically trigger Remediation to update definitions while holding the machine in a quarantine sandbox. <span class="text-xs text-blue-500 font-mono">[cite: 403]</span></p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg mb-2">3. Rapid Threat Containment (RTC) <span class="text-xs text-blue-500 font-mono">[cite: 404]</span></h4>
+                            <p class="text-sm text-gray-700">Through Adaptive Network Control (ANC) and integration with Firewalls/SIEM, ISE dynamically quarantines compromised machines. <span class="text-xs text-blue-500 font-mono">[cite: 405, 406]</span> If a Firewall detects malware, it alerts ISE via API. ISE instantly pushes a RADIUS Change of Authorization (CoA) to the switch port, dropping the user into an isolated black-hole VLAN. <span class="text-xs text-blue-500 font-mono">[cite: 407-411]</span></p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg mb-2">4. BYOD & TACACS+ Auditing <span class="text-xs text-blue-500 font-mono">[cite: 412, 419]</span></h4>
+                            <p class="text-sm text-gray-700">ISE automates personal device onboarding via a Self-Service BYOD Portal, pushing certs for seamless EAP-TLS. <span class="text-xs text-blue-500 font-mono">[cite: 413-418]</span> Additionally, for TACACS+, ISE enforces highly specific Command Sets (e.g., Level 1 Engineers can 'show', but not 'configure terminal') and maintains centralized Audit Trails of every keystroke for compliance. <span class="text-xs text-blue-500 font-mono">[cite: 420-424]</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-md">
+                    <div class="bg-slate-900 p-8 text-white">
+                        <h3 class="text-3xl font-bold flex items-center gap-4"><i class="fa-solid fa-bug text-rose-400"></i> Phase 8: Deep Troubleshooting with TCP Dumps</h3>
+                        <p class="mt-2 text-slate-300">When troubleshooting complex authentication issues—like a sticky 802.1X timeout, a misbehaving RADIUS client, or a failing Active Directory join—sometimes high-level logs aren't enough. You need to see the raw packets moving across the wire. <span class="text-xs text-blue-300 font-mono">[cite: 425, 426]</span> Cisco ISE has a powerful built-in TCP Dump tool right in the GUI. <span class="text-xs text-blue-300 font-mono">[cite: 427, 428]</span></p>
+                    </div>
+                    <div class="p-8 md:p-10">
+                        <div class="grid md:grid-cols-2 gap-8 mb-8">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">1. Extracting the Dump (GUI) <span class="text-xs text-blue-500 font-mono">[cite: 429]</span></h4>
+                                <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
+                                    <li>Navigate to Operations > Troubleshoot > Diagnostic Tools > General Tools > TCP Dump. <span class="text-xs text-blue-500 font-mono">[cite: 430-435]</span></li>
+                                    <li>Select Host Name, Interface (e.g., eth0), and Filter (e.g., <code>port 1812</code>, <code>port 49</code>, or <code>host 10.10.40.55</code>). <span class="text-xs text-blue-500 font-mono">[cite: 436-442]</span></li>
+                                    <li>Click Start, reproduce the failure, click Stop, and download the .pcap file. <span class="text-xs text-blue-500 font-mono">[cite: 443-449]</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">2. Wireshark Filters <span class="text-xs text-blue-500 font-mono">[cite: 450]</span></h4>
+                                <ul class="text-sm text-gray-700 space-y-1 font-mono bg-gray-100 p-4 rounded-xl">
+                                    <li>radius <span class="font-sans text-xs text-gray-500 ml-1">- All RADIUS traffic</span> <span class="text-xs text-blue-500 font-mono">[cite: 454]</span></li>
+                                    <li>tacacs <span class="font-sans text-xs text-gray-500 ml-1">- Device administration</span> <span class="text-xs text-blue-500 font-mono">[cite: 455]</span></li>
+                                    <li>eap <span class="font-sans text-xs text-gray-500 ml-1">- 802.1X handshakes</span> <span class="text-xs text-blue-500 font-mono">[cite: 456]</span></li>
+                                    <li>radius.code == 1 <span class="font-sans text-xs text-gray-500 ml-1">- Access-Requests only</span> <span class="text-xs text-blue-500 font-mono">[cite: 457]</span></li>
+                                    <li>radius.code == 3 <span class="font-sans text-xs text-gray-500 ml-1">- Access-Rejects only</span> <span class="text-xs text-blue-500 font-mono">[cite: 458]</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="border-t pt-8">
+                            <h4 class="text-xl font-bold text-gray-900 mb-4">3. Correlating Packets with Live Logs <span class="text-xs text-blue-500 font-mono">[cite: 459, 460]</span></h4>
+                            <div class="space-y-4">
+                                <div class="bg-gray-50 p-4 rounded-xl border">
+                                    <strong class="text-rose-600 block mb-1">Scenario A: "Timeout" Error <span class="text-xs text-blue-500 font-mono">[cite: 462]</span></strong>
+                                    <p class="text-sm text-gray-700"><strong>Wireshark:</strong> Multiple Access-Requests, no replies. <strong>Live Logs:</strong> Nothing shows up. <span class="text-xs text-blue-500 font-mono">[cite: 463, 464]</span><br>
+                                    <strong>Diagnosis:</strong> A firewall is blocking UDP ports 1812/1813, or there is a RADIUS Shared Secret mismatch. <span class="text-xs text-blue-500 font-mono">[cite: 465, 466]</span></p>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-xl border">
+                                    <strong class="text-amber-600 block mb-1">Scenario B: EAP-TLS Cert Failures <span class="text-xs text-blue-500 font-mono">[cite: 467]</span></strong>
+                                    <p class="text-sm text-gray-700"><strong>Wireshark:</strong> TLS Alert (Unknown CA). <strong>Live Logs:</strong> "SSL/TLS handshake failed because client certificate chain could not be verified." <span class="text-xs text-blue-500 font-mono">[cite: 468-470]</span><br>
+                                    <strong>Diagnosis:</strong> The client doesn't trust ISE, or ISE doesn't have the client's Root CA in its Trusted Certificates store. <span class="text-xs text-blue-500 font-mono">[cite: 471]</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 bg-slate-900 text-slate-300 p-6 rounded-2xl">
+                            <h4 class="text-lg font-bold text-emerald-400 mb-2">Pro-Tip: Parsing RADIUS AVPs <span class="text-xs text-blue-500 font-mono">[cite: 472]</span></h4>
+                            <p class="text-sm mb-3">Expand the Radius Protocol dropdown in Wireshark to see Attribute-Value Pairs (AVPs): <span class="text-xs text-blue-500 font-mono">[cite: 473, 474]</span></p>
+                            <pre class="text-xs font-mono bg-slate-950 p-4 rounded-xl overflow-x-auto text-emerald-500 mb-3">
+▼ RADIUS Protocol <span class="text-xs text-slate-600 font-mono">[cite: 476]</span>
+  Code: Access-Request (1) <span class="text-xs text-slate-600 font-mono">[cite: 477]</span>
+  Identifier: 4 <span class="text-xs text-slate-600 font-mono">[cite: 478]</span>
+  Length: 214 <span class="text-xs text-slate-600 font-mono">[cite: 479]</span>
+  ► Attribute Value Pairs <span class="text-xs text-slate-600 font-mono">[cite: 480]</span>
+    ▼ AVP: l=16 t=Calling-Station-Id(31): 00-1A-4A-11-22-33 <span class="text-xs text-slate-600 font-mono">[cite: 481]</span>
+    ▼ AVP: l=14 t=NAS-IP-Address(4): 10.10.10.15 <span class="text-xs text-slate-600 font-mono">[cite: 482]</span>
+    ▼ AVP: l=6  t=NAS-Port-Type(61): Virtual(5) <span class="text-xs text-slate-600 font-mono">[cite: 483]</span></pre>
+                            <p class="text-sm">Cross-reference these AVPs directly with your ISE Policy Conditions. If your policy requires NAS-Port-Type=Ethernet but the AVP shows Virtual, you instantly know why it failed to match! <span class="text-xs text-blue-500 font-mono">[cite: 484, 485]</span></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="lab-topology" class="bg-slate-900 text-white py-20 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-4 py-1.5 bg-blue-900 text-blue-300 text-xs font-bold rounded-full uppercase tracking-wider">Practical Sandbox Engineering</span>
+                <h2 class="text-4xl font-bold mt-4 text-white">Foundational 3-Node Practice Lab Topology</h2>
+                <p class="text-slate-400 mt-2 max-w-2xl mx-auto">This represents the absolute standard topology map required to validate Dot1x/MAB policies successfully inside a local sandbox environment.</p>
+            </div>
+
+            <div class="bg-slate-800 rounded-3xl p-8 border border-slate-700 shadow-xl mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center">
+                    
+                    <div class="bg-slate-900 p-6 rounded-2xl border border-blue-500/30">
+                        <div class="text-3xl text-blue-400 mb-2"><i class="fa-solid fa-server"></i></div>
+                        <h4 class="font-bold text-base text-white">Active Directory / Domain Controller</h4>
+                        <div class="text-xs font-mono text-slate-400 mt-2 bg-slate-950 p-2 rounded-lg">IP: 10.1.10.10<br>Domain: enterprise.local</div>
+                        <p class="text-xs text-slate-400 mt-3 leading-relaxed">Provides identity verification records and domain user account matching maps over LDAP protocols.</p>
+                    </div>
+
+                    <div class="bg-slate-900 p-6 rounded-2xl border border-purple-500/30 relative">
+                        <div class="hidden md:block absolute top-1/2 -left-4 w-4 h-0.5 bg-slate-700"></div>
+                        <div class="hidden md:block absolute top-1/2 -right-4 w-4 h-0.5 bg-slate-700"></div>
+                        
+                        <div class="text-3xl text-purple-400 mb-2"><i class="fa-solid fa-network-wired"></i></div>
+                        <h4 class="font-bold text-base text-white">Cisco Catalyst Access Switch (NAD)</h4>
+                        <div class="text-xs font-mono text-slate-400 mt-2 bg-slate-950 p-2 rounded-lg">IP: 10.1.10.100<br>Platform: WS-C2960X</div>
+                        <p class="text-xs text-slate-400 mt-3 leading-relaxed">Intercepts user interface requests, applies dynamic configurations, and issues RADIUS frames to ISE.</p>
+                    </div>
+
+                    <div class="bg-slate-900 p-6 rounded-2xl border border-emerald-500/30">
+                        <div class="text-3xl text-emerald-400 mb-2"><i class="fa-solid fa-gear"></i></div>
+                        <h4 class="font-bold text-base text-white">Cisco Identity Services Engine (ISE)</h4>
+                        <div class="text-xs font-mono text-slate-400 mt-2 bg-slate-950 p-2 rounded-lg">IP: 10.1.10.21<br>Persona: Standalone</div>
+                        <p class="text-xs text-slate-400 mt-3 leading-relaxed">Evaluates data context rules passed from the network device, looks up identity references, and issues security enforcement targets.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 font-mono text-sm">
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2"><i class="fa-solid fa-terminal text-purple-400"></i> Catalyst Switch Global Configuration</h4>
+                    <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 text-slate-300 overflow-x-auto shadow-inner h-96 overflow-y-auto">
+                        <p class="text-slate-500">! Enable AAA global processes within hardware memory:</p>
+                        <p>aaa new-model</p>
+                        <p class="text-slate-500">! Configure ISE as the authentication and authorization target server:</p>
+                        <p>radius server ISE_NODE</p>
+                        <p class="pl-4">address ipv4 10.1.10.21 auth-port 1812 acct-port 1813</p>
+                        <p class="pl-4 text-emerald-400">key Cisco123Safe</p>
+                        <p class="text-slate-500">! Define authentication routing logic structures mapping to RADIUS protocols:</p>
+                        <p>aaa authentication dot1x default group radius</p>
+                        <p>aaa authorization network default group radius</p>
+                        <p>aaa accounting update periodic 15</p>
+                        <p>aaa accounting network default start-stop group radius</p>
+                        <p class="text-slate-500">! Activate global 802.1x control processing across hardware matrix linecards:</p>
+                        <p>dot1x system-auth-control</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2"><i class="fa-solid fa-terminal text-emerald-400"></i> Local Port Access Definition Configuration</h4>
+                    <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 text-slate-300 overflow-x-auto shadow-inner h-96 overflow-y-auto">
+                        <p class="text-slate-500">! Select target physical endpoint access interface:</p>
+                        <p>interface GigabitEthernet1/0/5</p>
+                        <p class="pl-4">description Managed_Access_Port_Enforced_by_ISE</p>
+                        <p class="pl-4">switchport mode access</p>
+                        <p class="pl-4">switchport access vlan 10</p>
+                        <p class="text-slate-500 pl-4">! Enforce concurrent execution of 802.1X authentication and MAC Bypass paths:</p>
+                        <p class="pl-4">authentication order dot1x mab</p>
+                        <p class="pl-4">authentication priority dot1x mab</p>
+                        <p class="text-slate-500 pl-4">! Activate localized authentication monitor state tracks:</p>
+                        <p class="pl-4">authentication port-control auto</p>
+                        <p class="pl-4">mab</p>
+                        <p class="pl-4">dot1x pae authenticator</p>
+                        <p class="text-slate-500 pl-4">! Force local hardware to request dynamic access control entries (dACLs):</p>
+                        <p class="pl-4">ip device tracking maximum 10</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="management" class="bg-gray-100 py-20 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-bold">Day-to-Day Management & Operations</h2>
+            <div class="grid md:grid-cols-2 gap-12 mt-12 items-center">
+                <div>
+                    <h3 class="font-semibold text-xl mb-6">Key Management Capabilities</h3>
+                    <ul class="space-y-6">
+                        <li><i class="fa-solid text-emerald-500 fa-circle-check mr-2"></i> <strong>Live Sessions & Logs</strong> — Real-time visibility into active access points and client sessions.</li>
+                        <li><i class="fa-solid text-emerald-500 fa-circle-check mr-2"></i> <strong>Policy Sets & Conditions</strong> — Dynamic logical rule enforcement via Location, SSID, and Device Profiler attributes.</li>
+                        <li><i class="fa-solid text-emerald-500 fa-circle-check mr-2"></i> <strong>Backup & Restore</strong> — Scheduled automated data repository configuration dumps.</li>
+                        <li><i class="fa-solid text-emerald-500 fa-circle-check mr-2"></i> <strong>REST APIs & Automation</strong> — Full support for infrastructure management via Ansible, Terraform, or Python.</li>
+                        <li><i class="fa-solid text-emerald-500 fa-circle-check mr-2"></i> <strong>TrustSec & SGTs</strong> — Scalable application-centric segmentation using Security Group Tags.</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-3xl shadow-xl p-4">
+                    <img src="https://picsum.photos/id/1015/1200/700" alt="ISE Dashboard" class="rounded-3xl w-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quizzes" class="max-w-7xl mx-auto px-6 py-20 bg-white scroll-mt-20">
+        <div class="text-center mb-12">
+            <span class="px-5 py-2 bg-emerald-100 text-emerald-700 rounded-3xl text-sm font-semibold">KNOWLEDGE VALIDATION</span>
+            <h2 class="text-5xl font-bold mt-6">Test Your Cisco ISE Knowledge</h2>
+            <p class="mt-4 text-gray-600">Generate an interactive, high-fidelity 20-question comprehensive evaluation test matching core production system tracking paradigms.</p>
+        </div>
+
+        <div class="flex justify-center mb-10">
+            <button onclick="generateRandomTest()" 
+                    class="bg-[#0072B8] hover:bg-blue-700 text-white px-10 py-4 rounded-2xl font-semibold text-lg flex items-center gap-3 transition-colors shadow-md">
+                <i class="fas fa-random"></i> Generate Random 20-Question Test
+            </button>
+        </div>
+
+        <div id="quiz-container" class="max-w-3xl mx-auto">
+             <div class="text-center text-gray-400 p-10 border-2 border-dashed rounded-3xl">Click the button above to execute a real-time exam tracking instance.</div>
+        </div>
+    </section>
+
+    <section id="resources" class="bg-gray-900 text-white py-20 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16">Learning Resources</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-8 flex items-center gap-3">
+                        <i class="fab fa-youtube text-red-500"></i> Free Resources
+                    </h3>
+                    <div class="space-y-6">
+                        <a href="https://www.youtube.com/@CiscoISE" target="_blank" class="block bg-gray-800 hover:bg-gray-700 p-6 rounded-3xl transition-colors">
+                            <div class="font-medium text-lg">Official Cisco ISE YouTube Channel</div>
+                            <div class="text-xs text-gray-400 mt-1">Official webinars, deployment architectures, and technical capability breakdowns.</div>
+                        </a>
+                        <a href="https://www.cisco.com/c/en/us/support/security/identity-services-engine/products-installation-and-configuration-guides-list.html" target="_blank" class="block bg-gray-800 hover:bg-gray-700 p-6 rounded-3xl transition-colors">
+                            <div class="font-medium text-lg">Cisco Official Configuration Guides</div>
+                            <div class="text-xs text-emerald-400 mt-1">Granular step-by-step administrator configuration references directly from Cisco.</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-8 flex items-center gap-3">
+                        <i class="fas fa-graduation-cap text-indigo-400"></i> Official Training
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="bg-gray-800 p-6 rounded-3xl">
+                            <div class="font-medium text-lg">Implementing Cisco ISE (SISE) v4.0</div>
+                            <div class="text-xs text-emerald-400 mt-1">Official Cisco Certification Framework Portfolio Training Course</div>
+                            <a href="https://www.cisco.com/site/us/en/learn/training-certifications/training/courses/sise.html" target="_blank" class="text-sm mt-4 inline-block bg-blue-600 hover:bg-blue-700 px-5 py-2.5 rounded-2xl font-medium transition-colors">Enroll Protocol →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white/70 py-16 text-center border-t border-gray-800">
+        <p class="text-sm">Created BY Ashutosh Tiwari</p>
+    </footer>
+
+    <script>
+        const allQuestions = [
+            {
+                q: "What are the standard UDP ports processed globally by Cisco ISE for listening to RADIUS Authentication and Accounting streams?",
+                options: ["Authentication UDP 1812, Accounting UDP 1813", "Authentication TCP 49, Accounting TCP 80", "Authentication UDP 1645, Accounting UDP 1646", "Authentication UDP 8021, Accounting UDP 8022"],
+                correct: 0,
+                explanation: "Modern IETF standards define UDP port 1812 explicitly to process RADIUS Authentication payloads and UDP port 1813 to track RADIUS Accounting telemetry streams."
+            },
+            {
+                q: "Which functional Cisco ISE node persona is solely responsible for verifying inbound RADIUS access authentication requests against local identity stores?",
+                options: ["PAN (Policy Administration Node)", "PSN (Policy Service Node)", "MnT (Monitoring & Troubleshooting Node)", "pxGrid Node"],
+                correct: 1,
+                explanation: "The Policy Service Node (PSN) acts as the workhorse processing transactional AAA flows, executing protocol decisions directly against configured network policies."
+            },
+            {
+                q: "During initial system bootstrap configuration, what core infrastructure dependency mapping error will stop external nodes from registering cleanly?",
+                options: ["Omitting secondary loopback routes on target physical interfaces", "Mismatched forward and reverse (PTR) DNS lookup records configured within network environment zone controllers", "Configuring an incorrect internal BGP autonomous system sequence tag", "Enabling TACACS rules directly over interface VLAN definitions"],
+                correct: 1,
+                explanation: "Cisco ISE mandates completely accurate forward and reverse DNS lookup matching maps across domain environment targets during initialization or inter-node clustering replication procedures will instantly fail."
+            },
+            {
+                q: "When configuring a Cisco switch interface to communicate with ISE, what does the command 'authentication port-control auto' enforce?",
+                options: ["It enforces 802.1X control metrics globally on the switch backplane", "It actively puts the port into an unauthorized state until an incoming verification request succeeds via ISE", "It automatically runs an intensive hardware diagnostics verification sequence loop", "It bypasses all local configurations to process connections dynamically over generic guest VLAN allocations"],
+                correct: 1,
+                explanation: "'authentication port-control auto' activates standard AAA tracking states on physical edge interfaces, instructing hardware paths to drop user traffic until validation processes map an explicit permit condition."
+            },
+            {
+                q: "Which specific endpoint security profiling probe method leverages the captured OUI structure string natively within standard broadcast frames to identify hardware?",
+                options: ["DNS Query Payload Interception", "DHCP Helper Fingerprint Scraping Engine", "Active SNMP Polling Arrays", "Network Layer ICMP Scanning Targets"],
+                correct: 1,
+                explanation: "The DHCP Probe reads specialized options payloads along with Vendor ID fields or Organizational Unique Identifier (OUI) structures mapped inside broadcast frames to transparently cluster connected host operating system profiles."
+            },
+            {
+                q: "What 16-bit application parameter metadata wrapper does Cisco TrustSec inject explicitly into data packet headers to enforce micro-segmentation architectures?",
+                options: ["Dynamic VLAN Allocation Identifier (DVID)", "Security Group Tag (SGT)", "Generic Routing Wrapper Flag (GRW)", "Access List Evaluation Token (AET)"],
+                correct: 1,
+                explanation: "Cisco TrustSec replaces traditional IP access maps by embedding an inline 16-bit value called a Security Group Tag (SGT) within packet frames to govern traffic enforcement independent of topological routing positions."
+            },
+            {
+                q: "What protocol mechanism does the Cisco Identity Services Engine execute to forcibly inform an access switch that an endpoint's network permissions have changed?",
+                options: ["RADIUS Access-Reject Sequence", "CoA (Change of Authorization)", "SNMP SET Interface Shutdown Request", "Syslog Critical Priority Trigger Event"],
+                correct: 1,
+                explanation: "RADIUS Change of Authorization (CoA) actions allow an active ISE instance to communicate downstream to a Network Access Device (NAD), forcing an immediate re-evaluation or termination of an active user interface session on the fly."
+            },
+            {
+                q: "Which cryptographic standard represents the secure protocol channel designed to handle administrative console commands over TACACS+ infrastructure environments?",
+                options: ["UDP Protocol Layer Payload Arrays", "TCP Protocol Port 49 Encapsulation Processing", "Generic UDP Port 1646 Execution Strings", "Secure Shell Transport Encapsulation Matrices"],
+                correct: 1,
+                explanation: "Unlike generic RADIUS which handles operations across distinct UDP pipelines, the TACACS+ configuration framework uses reliable connection-oriented TCP transmission streams across target Port 49."
+            }
+        ];
+
+        const coreTopics = [
+            "MAB (MAC Authentication Bypass)", "EAP-TLS Certificate Authentication", "PEAP-MSCHAPv2 Identity Configurations", 
+            "Supplicant Software Operations", "dACL (Dynamic Access Control List) Deployments", "Guest Lifecycle Sponsor Models", 
+            "EAP Chaining Architecture", "ANC (Adaptive Network Control) Mitigation", "Local Certificate Authorities inside ISE", 
+            "Active Directory Joining Constraints", "NTP Synchronization Failures", "RADIUS Token Authentication Profiles"
+        ];
+
+        coreTopics.forEach((topic, index) => {
+            allQuestions.push({
+                q: `In an enterprise network scenario managing ${topic} deployments via Cisco ISE, what operational misconfiguration leads directly to unexpected session authorization rejections?`,
+                options: [
+                    "Mismatching the shared secret key string value between the target NAD and the primary ISE registration portal",
+                    "Disabling generic spanning-tree configurations on target local upstream structural trunk infrastructure distribution lines",
+                    "Setting local switch loopback logical interfaces into an active physical tracking state manually",
+                    "Configuring standard OSPF cost values symmetrically along internal cloud link pathways"
+                ],
+                correct: 0,
+                explanation: `Validating operational architectures managing ${topic} configurations mandates absolute data consistency across foundational keys. Mismatching shared secret strings across parameters causes immediate RADIUS packet parsing failures.`
+            });
+        });
+
+        let currentTest = [];
+        let currentQ = 0;
+        let userAnswers = [];
+
+        function generateRandomTest() {
+            currentTest = [...allQuestions].sort(() => 0.5 - Math.random()).slice(0, 20);
+            currentQ = 0;
+            userAnswers = new Array(20).fill(undefined);
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            if (currentTest.length === 0) return;
+            const q = currentTest[currentQ];
+            const chosenIdx = userAnswers[currentQ];
+            
+            let html = `
+                <div class="bg-white border rounded-3xl p-10 shadow-md">
+                    <div class="flex justify-between mb-8 items-center border-b pb-4">
+                        <span class="text-sm font-semibold tracking-wider text-gray-500 uppercase">Evaluation Queue</span>
+                        <span class="text-sm font-bold text-[#0072B8]">Question ${currentQ + 1} of 20</span>
+                    </div>
+                    <p class="text-xl font-semibold mb-8 text-gray-900">${q.q}</p>
+                    <div class="space-y-4" id="options-container">
+            `;
+
+            q.options.forEach((opt, idx) => {
+                const isSelected = chosenIdx === idx;
+                html += `
+                    <div onclick="selectAnswer(${idx})" 
+                         class="quiz-option border-2 ${isSelected ? 'selected-option font-medium' : 'border-gray-200'} p-5 rounded-2xl cursor-pointer text-base text-gray-700">
+                        <div class="flex items-center gap-3">
+                            <span class="w-6 h-6 flex items-center justify-center rounded-full border text-xs ${isSelected ? 'bg-[#0072B8] text-white border-transparent' : 'bg-gray-50 border-gray-300'}">${String.fromCharCode(65 + idx)}</span>
+                            <span>${opt}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                    </div>
+                    <div class="mt-12 flex justify-between gap-4">
+                        <button onclick="prevQuestion()" class="px-8 py-3.5 border font-medium rounded-2xl transition-opacity ${currentQ === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-gray-50'}">Previous</button>
+                        <button onclick="nextQuestion()" class="px-10 py-3.5 bg-[#0072B8] hover:bg-blue-700 text-white rounded-2xl font-semibold transition-colors shadow-sm">
+                            ${currentQ === 19 ? 'Finish Test Suite' : 'Next Question'}
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('quiz-container').innerHTML = html;
+        }
+
+        function selectAnswer(idx) {
+            userAnswers[currentQ] = idx;
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQ] === undefined) {
+                alert("Please select a clear answer option choice before moving to the next question layout.");
+                return;
+            }
+            if (currentQ < 19) {
+                currentQ++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQ > 0) {
+                currentQ--;
+                renderQuestion();
+            }
+        }
+
+        function showResults() {
+            let score = 0;
+            let reviewHTML = "";
+
+            currentTest.forEach((q, i) => {
+                const isCorrect = userAnswers[i] === q.correct;
+                if (isCorrect) score++;
+                
+                reviewHTML += `
+                    <div class="mt-8 border-l-4 ${isCorrect ? 'border-emerald-500 bg-emerald-50/30' : 'border-red-500 bg-red-50/30'} p-6 rounded-r-2xl border border-y-gray-100 border-r-gray-100">
+                        <p class="font-semibold text-gray-900">${i + 1}. ${q.q}</p>
+                        <div class="grid sm:grid-cols-2 gap-2 mt-4 text-sm">
+                            <p class="${isCorrect ? 'text-emerald-700 font-medium' : 'text-red-700 font-medium'}">
+                                <strong>Your Choice:</strong> ${userAnswers[i] !== undefined ? q.options[userAnswers[i]] : 'Unanswered / Skipped'}
+                            </p>
+                            ${!isCorrect ? `<p class="text-emerald-700 font-medium"><strong>Correct Option:</strong> ${q.options[q.correct]}</p>` : ''}
+                        </div>
+                        <p class="text-gray-600 mt-3 text-sm bg-white p-3 border rounded-xl shadow-inner"><strong>Diagnostic Explanation:</strong> ${q.explanation}</p>
+                    </div>
+                `;
+            });
+
+            let passingScore = score >= 14;
+            let finalHTML = `
+                <div class="bg-white border rounded-3xl p-10 shadow-lg">
+                    <h2 class="text-3xl font-bold text-center text-gray-900">Performance Assessment Summary</h2>
+                    <p class="text-6xl font-black text-center text-[#0072B8] mt-6">${score} <span class="text-2xl font-bold text-gray-400">/ 20</span></p>
+                    <div class="text-center mt-3">
+                        <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest ${passingScore ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+                            ${passingScore ? 'Status: PASS (70% Target Reached)' : 'Status: FAIL (Review Core Prerequisites)'}
+                        </span>
+                    </div>
+                    <div class="mt-10 border-t pt-4">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Granular Session Review Log</h3>
+                        ${reviewHTML}
+                    </div>
+                    <button onclick="generateRandomTest()" class="mt-12 w-full py-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-2xl shadow transition-colors">Generate New Diagnostic Assessment Test</button>
+                </div>
+            `;
+            
+            document.getElementById('quiz-container').innerHTML = finalHTML;
+            document.getElementById('quizzes').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
